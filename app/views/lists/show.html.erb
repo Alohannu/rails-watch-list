@@ -1,11 +1,13 @@
   <div class="container"><h1><%= @list.name %></h1>
   <% @list.movies.each do |movie| %>
+  <% bookmark = Bookmark.find_by(movie: movie, list: @list) %>
   <div class="card-category"><h2><%= movie.title %></h2>
   <p>Rating: <%= movie.rating %>/10</p>
   <p>Description: <%= movie.overview %></p>
+  <p>Description: <%= bookmark.comment %></p>
 
   <div class="col"><img src="<%= movie.poster_url %>" alt="">
-  <%= link_to "Delete bookmark", @bookmark, method: :delete, data: { confirm: "Are you sure?" },  class: "btn btn-danger" %>
+  <%= link_to "Delete bookmark", bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure?" },  class: "btn btn-danger" %>
 
   </div></div>
 
