@@ -1,0 +1,10 @@
+<div class="container"><h1>New Bookmark</h1>
+<%= simple_form_for [@list, @bookmark] do |t| %>
+<%= t.input :comment %>
+<%= t.association :movie %>
+<%= t.submit %>
+<% end %>
+<%= link_to "Go back", lists_path, class: "btn btn-dark" %>
+</div>
+
+<%= render 'form', restaurant: @restaurant %>
